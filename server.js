@@ -5,7 +5,7 @@
 const express = require('express');
 const path = require('path');
 
-const port = process.env.PORT || 8000;
+const port = process.env.PORT || 8082;
 const publicPath = '/';
 
 const distDir = path.join(__dirname, 'dist');
@@ -16,5 +16,6 @@ app.use(publicPath, express.static(configDir));
 app.use(publicPath, express.static(distDir));
 
 app.listen(port, function () {
+  console.log("poolId", process.env.POOL_ID)
   console.log(`App listening on: http://localhost:${port}`);
 });

@@ -9055,8 +9055,10 @@ function incrementLoopCount(config) {
   console.warn(`loopCount is now ${loopCount + 1}`);
 }
 function getAuth(config) {
-  const rd1 = window.location.protocol + '//' + window.location.hostname + window.location.pathname + '?loggedin=yes';
-  const rd2 = window.location.protocol + '//' + window.location.hostname + window.location.pathname + '?loggedout=yes';
+  //const rd1 = window.location.protocol + '//' + window.location.hostname + ':8082' + window.location.pathname + '?loggedin=yes';
+  //const rd2 = window.location.protocol + '//' + window.location.hostname + ':8082' + window.location.pathname +  '?loggedout=yes';
+  const rd1 = `${window.location.protocol}//${window.location.hostname}:${window.location.port}${window.location.pathname}?loggedin=yes`;
+  const rd2 = `${window.location.protocol}//${window.location.hostname}:${window.location.port}${window.location.pathname}?loggedout=yes`;
   const authData = {
     ClientId: config.appUserPoolClientId,
     // Your client id here

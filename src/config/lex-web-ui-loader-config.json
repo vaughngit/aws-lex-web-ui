@@ -1,4 +1,5 @@
 {
+
   "connect": {
     "contactFlowId": "",
     "instanceId": "",
@@ -11,5 +12,57 @@
     "chatEndedMessage": "",
     "attachChatTranscript": "",
     "transcriptMessageDelayInMsec": ""
+  },
+  "ui": {
+    "toolbarTitle": "Order Flowers",
+    "toolbarLogo": "",
+    "toolbarStartLiveChatLabel": "Start Live Chat",
+    "toolbarEndLiveChatLabel": "End Live Chat",
+    "toolbarStartLiveChatIcon": "people_alt",
+    "toolbarEndLiveChatIcon": "call_end",
+    "positiveFeedbackIntent": "Thumbs up",
+    "negativeFeedbackIntent": "Thumbs down",
+    "helpIntent": "Help",
+    "minButtonContent": "",
+    "avatarImageUrl": "",
+    "backButton": false,
+    "messageMenu": false,
+    "hideButtonMessageBubble": false,
+    "enableLogin": true,
+    "enableLiveChat": false,
+    "forceLogin": false,
+    "enableUpload": false,
+    "uploadS3BucketName": "",
+    "AllowSuperDangerousHTMLInMessage": true,
+    "shouldDisplayResponseCardTitle": false,
+    "saveHistory": false,
+    "helpContent": {},
+    "enableSFX": false,
+    "hideInputFieldsForButtonResponse": false,
+    "pushInitialTextOnRestart": false,
+    "directFocusToBotInput": false,
+    "showDialogStateIcon": false
+  },
+  "cognito": {
+    "poolId": "us-east-1:d8f50f09-e66d-4fed-97ec-23797498e198",
+    "appUserPoolClientId": "27oliie8csc72avgbtnm0bslkj",
+    "appUserPoolName": "us-east-1_XurSlHUWI",
+    "appDomainName": "tnclex-app-dev.auth.us-east-1.amazoncognito.com",
+    "aws_cognito_region": "us-east-1",
+    "region": "us-east-1"
+  },
+  "lex": {
+    "v2BotId": "8Z9GZ2PHLV",
+    "v2BotAliasId": "5HUVEDSD3M",
+    "v2BotLocaleId": "en_US",
+    "botName": "IacLexChatbot",
+    "botAlias": "$LATEST",
+    "initialText": "Type 'Whats my balance' to get started.",
+    "initialSpeechInstruction": "Say 'Buy Flowers' to get started.",
+    "initialUtterance": "",
+    "reInitSessionAttributesOnRestart": false,
+    "region": "us-east-1",
+    "retryOnLexPostTextTimeout": "false",
+    "retryCountPostTextTimeout": "1"
   }
 }

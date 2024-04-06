@@ -2,7 +2,7 @@ variables:
   #AWS_REGION: us-east-2
 stages:
 - assume-role-dev
-- build-test
+- build-client
 #- deploy-dev
 #- deploy-prod
 assume-role-dev-env:
@@ -46,8 +46,8 @@ assume-role-dev-env:
     paths:
       - build.env
 
-build-job:
-  stage: build-test
+build-client-job:
+  stage: build-client
   image: node:20
   dependencies:
     - assume-role-dev-env
@@ -56,7 +56,7 @@ build-job:
     - node_modules/
   script:
   - source build.env
-  - echo "Preforming build test on the code with AWS_ACCOUNT_ID=${AWS_ACCOUNT_ID}..."
+  - echo "Preforming build on the client code ..."
   # - echo $AWS_ACCOUNT_ID
   # - echo $AWS_REGION
   # - echo $AWS_ACCESS_KEY_ID
@@ -68,6 +68,7 @@ build-job:
   - export AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
   - export AWS_SESSION_TOKEN=${AWS_SESSION_TOKEN}
   - echo "Compiling the code..."
+  - cd ./lex-web-ui
   - npm install
   - npm run build
   #- npx cdk synth --output cdk.out
@@ -77,6 +78,39 @@ build-job:
   #   paths:
   #     - cdk.out/
   #   expire_in: 1 hour
+
+
+# build-job:
+#   stage: build-test
+#   image: node:20
+#   dependencies:
+#     - assume-role-dev-env
+#   cache:
+#     paths:
+#     - node_modules/
+#   script:
+#   - source build.env
+#   - echo "Preforming build test on the code with AWS_ACCOUNT_ID=${AWS_ACCOUNT_ID}..."
+#   # - echo $AWS_ACCOUNT_ID
+#   # - echo $AWS_REGION
+#   # - echo $AWS_ACCESS_KEY_ID
+#   # - echo $CDK_DEFAULT_ACCOUNT
+#   # - echo $CDK_DEFAULT_REGION
+#   - export CDK_DEFAULT_ACCOUNT=$AWS_ACCOUNT_ID
+#   - export CDK_DEFAULT_REGION=$AWS_REGION
+#   - export AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+#   - export AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+#   - export AWS_SESSION_TOKEN=${AWS_SESSION_TOKEN}
+#   - echo "Compiling the code..."
+#   - npm install
+#   - npm run build
+#   #- npx cdk synth --output cdk.out
+#   #- ls -aR
+#   - echo "Compile complete."
+#   # artifacts:
+#   #   paths:
+#   #     - cdk.out/
+#   #   expire_in: 1 hour
 
 # deploy-dev-env:
 #   stage: deploy-dev

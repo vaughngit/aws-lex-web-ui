@@ -16,6 +16,6 @@ app.use(publicPath, express.static(configDir));
 app.use(publicPath, express.static(distDir));
 
 app.listen(port, function () {
-  console.log("poolId", process.env.POOL_ID)
+  //console.log("poolId", process.env.POOL_ID)
   console.log(`App listening on: http://localhost:${port}`);
 });
